@@ -24,6 +24,7 @@ spec:
       containers:
       - name: catalogue
         image: vinaydocker25/catalogue-optimized:v1
+        imagePullPolicy: Always
         ports:  # like EXPOSE just for information
         - name: liveness-port
           containerPort: 8080
