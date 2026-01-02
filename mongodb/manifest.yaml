@@ -23,5 +23,5 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: vinaydocker25/mongodb-optimized:v1
+        image: vinaydocker25/mongo-optimized:v1
 
