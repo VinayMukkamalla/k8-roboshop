@@ -31,13 +31,13 @@ spec:
           httpGet:
             path: /health
             port: liveness-port
-          failureThresold: 1
+          failureThreshold: 1
           periodSeconds: 15
         livenessProbe:
           httpGet:
             path: /health
             port: liveness-port
-          failureThresold: 1
+          failureThreshold: 1
           periodSeconds: 15
 ---
 # service to connect to catalogue pod
