@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue-deployment
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: catalogue
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      component: catalogue
+      tier: backend
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: catalogue
+        tier: backend
+    spec:
+      containers:
+      - name: catalogue
+        image: vinaydocker25/catalogue-optimized:v1
+        ports:  # like EXPOSE just for information
+        - name: liveness-port
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: liveness-port
+          failureThresold: 1
+          periodSeconds: 15
+          # tcpSocket:
+          #   port: 8080
+          # initialDelaySeconds: 10
+          # periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: liveness-port
+          failureThresold: 1
+          periodSeconds: 15
+          # tcpSocket:
+          #   port: 8080
+          # initialDelaySeconds: 5
+          # periodSeconds: 5
+
+---
+# service to connect to catalogue pod
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogue
+  namespace: roboshop
+spec:
+  selector:
+    project: roboshop
+    component: catalogue
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080 
