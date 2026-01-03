@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: vinaydocker25/mysql-optimized:v1
+        image: vinaydocker25/mysql:v1
         imagePullPolicy: Always
         # readinessProbe:
         #   tcpSocket:
