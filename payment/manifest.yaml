@@ -40,7 +40,7 @@ spec:
         image: vinaydocker25/payment-optimized:v1
         imagePullPolicy: Always
         envFrom:
-          configMapRef:
+        - configMapRef:
             name: payment
         ports:
         - name: liveness-port
