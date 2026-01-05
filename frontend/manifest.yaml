@@ -119,7 +119,7 @@ spec:
         
       volumes:
       - name: nginx-config
-        configMapRef:
+        configMap:
           name: frontend
 ---
 apiVersion: v1
