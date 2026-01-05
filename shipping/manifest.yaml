@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: shipping
-        image: vinaydocke25/shipping-optimized:v1
+        image: vinaydocker25/shipping-optimized:v1
         imagePullPolicy: Always
         envFrom:
         - configMapRef:
