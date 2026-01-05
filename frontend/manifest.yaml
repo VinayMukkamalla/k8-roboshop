@@ -34,8 +34,8 @@ data:
         include /etc/nginx/conf.d/*.conf;
 
         server {
-            listen       80;
-            listen       [::]:80;
+            listen       8080;
+            listen       [::]:8080;
             server_name  _;
             root         /usr/share/nginx/html;
 
@@ -103,13 +103,13 @@ spec:
         readinessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: liveness-port
           failureThreshold: 1
           periodSeconds: 15
         livenessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: liveness-port
           failureThreshold: 1
           periodSeconds: 15
         volumeMounts:
