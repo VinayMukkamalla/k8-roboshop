@@ -34,8 +34,8 @@ data:
         include /etc/nginx/conf.d/*.conf;
 
         server {
-            listen       8080;
-            listen       [::]:8080;
+            listen       80;
+            listen       [::]:80;
             server_name  _;
             root         /usr/share/nginx/html;
 
@@ -99,17 +99,17 @@ spec:
         imagePullPolicy: Always
         ports:
         - name: liveness-port
-          containerPort: 80
+          containerPort: 8080
         readinessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 8080
           failureThreshold: 1
           periodSeconds: 15
         livenessProbe:
           httpGet:
             path: /
-            port: 80
+            port: 8080
           failureThreshold: 1
           periodSeconds: 15
         volumeMounts:
