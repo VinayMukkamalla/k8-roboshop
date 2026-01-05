@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: vinaydocke25/frontend-optimized:v1
+        image: vinaydocker25/frontend-optimized:v1
         imagePullPolicy: Always
         ports:
         - name: liveness-port
@@ -47,12 +47,11 @@ metadata:
   name: frontend
   namespace: roboshop
 spec:
-  type: LoadBalance
+  type: LoadBalancer
   selector:
-    labels:
-      project: roboshop
-      component: frontend
-      tier: frontend
+    project: roboshop
+    component: frontend
+    tier: frontend
   ports:
   - protocol: TCP
     port: 80
